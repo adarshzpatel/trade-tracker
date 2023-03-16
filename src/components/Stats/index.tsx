@@ -26,11 +26,13 @@ const Stats = (props: Props) => {
   const netProfit = useMemo(()=>{
     return profit + loss - data[0]?.change
   },[profit,loss])
+
+  const usdtToInr = 89
   return (
     <Grid className='mt-4 gap-4' >
        <Card>
         <Text>Net Change</Text>
-        <Metric>${netProfit.toFixed(2)}</Metric>
+        <Metric>${netProfit.toFixed(2)} (Rs. {(profit*89).toFixed(2)})</Metric>
       </Card>
       <Card>
         <Text>Total Profit</Text>
@@ -38,7 +40,7 @@ const Stats = (props: Props) => {
       </Card>
       <Card>
         <Text>Total Loss</Text>
-        <Metric>{loss.toFixed(2)}</Metric>
+        <Metric>{loss.toFixed(2)}(Rs. {(profit*89).toFixed(2)})</Metric>
       </Card>
       <Card>
         <Text>Avg. Profit</Text>
