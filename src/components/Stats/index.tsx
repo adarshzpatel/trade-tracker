@@ -30,15 +30,15 @@ const Stats = (props: Props) => {
     <Grid className='mt-4 gap-4' >
        <Card>
         <Text>Net Change</Text>
-        <Metric>${netProfit}</Metric>
+        <Metric>${netProfit.toFixed(2)}</Metric>
       </Card>
       <Card>
         <Text>Total Profit</Text>
-        <Metric>${profit - data[0]?.change}</Metric>
+        <Metric>${(profit - data[0]?.change).toFixed(2)} </Metric>
       </Card>
       <Card>
         <Text>Total Loss</Text>
-        <Metric>{loss}</Metric>
+        <Metric>{loss}.toFixed(2)</Metric>
       </Card>
       <Card>
         <Text>Avg. Profit</Text>
