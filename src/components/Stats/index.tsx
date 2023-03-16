@@ -12,7 +12,7 @@ const Stats = (props: Props) => {
     },0)
   },[data])
   const avgProfit = useMemo(()=>{
-    return ((profit -data[0]?.change)/ data.length).toFixed(2)
+    return ((profit -data[0]?.change)/ (data.length-1)).toFixed(2)
   },[profit,data])
   const loss = useMemo(()=>{
     return data.reduce((prev,next)=>{
@@ -20,7 +20,7 @@ const Stats = (props: Props) => {
     },0)
   },[data])
   const avgLoss = useMemo(()=>{
-    return (loss / data.length).toFixed(2)
+    return (loss / (data.length-1)).toFixed(2)
   },[profit,data])
 
   const netProfit = useMemo(()=>{
