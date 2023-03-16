@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
-import "@tremor/react/dist/esm/tremor.css";
 import { GlobalContextProvider } from "@/contexts/GlobalContext";
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -8,39 +8,42 @@ const NewDataInput = (props: Props) => {
   const [newBal, setNewBal] = useState<string>("0.00");
   const [reason, setReasaon] = useState<string>("");
   const { addNewTrade } = useGlobalState();
-  const allowed = "0123456789.-"
-  
-  const handleNewBalChange = (e:ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value
-    setNewBal(val)
-    console.log(val)
-  }
+  const allowed = "0123456789.-";
+
+  const handleNewBalChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setNewBal(val);
+    console.log(val);
+  };
 
   return (
-    <Card marginTop="mt-4">
+    <Card className="mt-4">
       <Title>Update Current Balance</Title>
-      <form onSubmit={(e)=>{e.preventDefault();addNewTrade(Number(newBal),reason)}}>
-
-      <TextInput
-      marginTop="mt-4"
-      id="newBal"
-      name="newBal"
-      
-      value={newBal}
-      onChange={handleNewBalChange}
-      />
-      <TextInput
-        id="reason"
-        name="reason"
-        value={reason}
-        placeholder="Why did i take this trade ?"
-        onChange={(e) => setReasaon(e.target.value)}
-        marginTop="mt-4"
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addNewTrade(Number(newBal), reason);
+        }}
+      >
+        <TextInput
+          className="mt-4"
+          id="newBal"
+          name="newBal"
+          value={newBal}
+          onChange={handleNewBalChange}
         />
-      <Button type="submit" variant="primary" marginTop="mt-4" >
-        Add Trade
-      </Button>
-        </form>
+        <TextInput
+          id="reason"
+          name="reason"
+          value={reason}
+          placeholder="Why did i take this trade ?"
+          onChange={(e) => setReasaon(e.target.value)}
+          className="mt-4"
+        />
+        <Button type="submit" variant="primary" color="indigo" className="mt-4">
+          Add Trade
+        </Button>
+      </form>
     </Card>
   );
 };

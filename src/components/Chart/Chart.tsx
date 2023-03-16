@@ -1,5 +1,15 @@
 import useGlobalState from "@/hooks/useGlobalState";
-import { AreaChart, Card, Flex, Icon, Metric, Tab, TabList, Text } from "@tremor/react";
+import {
+  AreaChart,
+  Card,
+  Flex,
+  Icon,
+  Metric,
+  ProgressBar,
+  Tab,
+  TabList,
+  Text,
+} from "@tremor/react";
 import React, { useState } from "react";
 import { BiDollar } from "react-icons/bi";
 
@@ -10,21 +20,27 @@ const dataFormatter = (number: number) => {
 };
 
 const Chart = (props: Props) => {
-  const [property,setProperty] = useState("currentBalance")
+  const [property, setProperty] = useState("currentBalance");
   const { data } = useGlobalState();
+  const target = 2000
+  const currentBal = data[data.length-1]?.currentBalance
+  const progress = (currentBal / target) * 100
   return (
     <Card>
       <Text>Balance</Text>
-      <Metric>${data[data.length-1]?.currentBalance}</Metric>
+        <Metric>${currentBal}</Metric>
+        <Flex className="mt-4">
+          <Text className="truncate">{`${progress}% ($ ${currentBal})`}</Text>
+          <Text>${target}</Text>
+        </Flex>
+        <ProgressBar percentageValue={progress} className="mt-2" color="indigo" />
 
       <AreaChart
         data={data}
         categories={[property]}
-        dataKey="id"
-        height="h-72"
+        index="id"
         colors={["indigo", "emerald", "rose"]}
         valueFormatter={dataFormatter}
-        marginTop="mt-4"
         autoMinValue
       />
     </Card>
