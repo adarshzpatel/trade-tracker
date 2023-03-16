@@ -30,7 +30,7 @@ const Chart = (props: Props) => {
       <Text>Balance</Text>
         <Metric>${currentBal}</Metric>
         <Flex className="mt-4">
-          <Text className="truncate">{`${progress}% ($ ${currentBal})`}</Text>
+          <Text className="truncate">{`${progress.toFixed(2)}% ($ ${currentBal})`}</Text>
           <Text>${target}</Text>
         </Flex>
         <ProgressBar percentageValue={progress} className="mt-2" color="indigo" />
