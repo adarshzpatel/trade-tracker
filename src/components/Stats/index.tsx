@@ -38,7 +38,7 @@ const Stats = (props: Props) => {
       </Card>
       <Card>
         <Text>Total Loss</Text>
-        <Metric>{loss}.toFixed(2)</Metric>
+        <Metric>{loss.toFixed(2)}</Metric>
       </Card>
       <Card>
         <Text>Avg. Profit</Text>
